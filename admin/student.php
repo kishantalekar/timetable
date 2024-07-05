@@ -5,7 +5,6 @@
 		{
 		window.location.href="deletestudent.php?stu_id="+id;
 		}
-	
 	}
 </script>
 
@@ -21,9 +20,9 @@ echo "<Tr><th>Student Id</th><th>Student Name</th><th>Email</th><th>Password</th
 <th>Pic</th><th>Gender</th><th>Status</th>
 <th>Update</th><th>Delete</th></tr>";
 
-	$que=mysqli_query($con,"select *  from student");
-	while($res=mysqli_fetch_array($que))
-	{
+$que=mysqli_query($con,"select * from student");
+while($res=mysqli_fetch_array($que))
+{
 	echo "<Tr>";
 	echo "<td>".$res['stu_id']."</td>" ;
 	echo "<td>".$res['name']."</td>" ;
@@ -32,15 +31,13 @@ echo "<Tr><th>Student Id</th><th>Student Name</th><th>Email</th><th>Password</th
 	echo "<td>".$res['mob']."</td>" ;
 	echo "<td>".$res['address']."</td>" ;
 	
-	//display department name
-	$que2=mysqli_query($con,"select *  from department where department_id='".$res['department_id']."'");
+	// display department name
+	$que2=mysqli_query($con,"select * from department where department_id='".$res['department_id']."'");
 	$res2=mysqli_fetch_array($que2);
-	
 	echo "<td>".$res2['department_name']."</td>" ;
 	
-	
-	//display semester name
-	$que1=mysqli_query($con,"select *  from semester where sem_id='".$res['sem_id']."'");
+	// display semester name
+	$que1=mysqli_query($con,"select * from semester where sem_id='".$res['sem_id']."'");
 	$res1=mysqli_fetch_array($que1);
 	echo "<td>".$res1['semester_name']."</td>" ;
 	
@@ -48,14 +45,11 @@ echo "<Tr><th>Student Id</th><th>Student Name</th><th>Email</th><th>Password</th
 	echo "<td>".$res['pic']."</td>" ;
 	echo "<td>".$res['gender']."</td>" ;
 	echo "<td>".$res['status']."</td>" ;
-	echo "<td><a href='admindashboard.php?info=updatestudent&stu_id=$res[stu_id]'>Update</a></td>";
-	?>
-    
-<td><a href='javascript:deleteData("<?php echo  $res[stu_id];?>")'>Delete</a></td>
-	<?php 
+	echo "<td><a href='admindashboard.php?info=updatestudent&stu_id=".$res['stu_id']."'>Update</a></td>";
+	
+	echo "<td><a href='javascript:deleteData(".$res['stu_id'].")'>Delete</a></td>";
 	echo "</tr>";
-	}
+}
 	
 echo "</table>";	
-
 ?>

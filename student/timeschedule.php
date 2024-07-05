@@ -41,7 +41,7 @@ while ($res = mysqli_fetch_array($que)) {
     // display department name
     $que22 = mysqli_query($con, "select * from department where department_id='" . $res['department_name'] . "'");
     $res22 = mysqli_fetch_array($que22);
-    echo "<td style='color:white'>" . $res22['department_name'] . "</td>";
+    echo "<td style='color:white'>" . $res['department_name'] . "</td>";
 
     // display semester name
     echo "<td style='color:white'>" . $semesterName . "</td>";
